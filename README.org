@@ -1,0 +1,18 @@
+** About
+
+Emacs package for saving point positions in a ring-like history.
+
+I know about =C-u C-SPC=, registers and bookmarks and I use all of
+those, but it's not enough for me, so I wrote this little package.
+
+** Usage
+
+To save current position, use =point-pos-save= command.
+
+To go to a saved position, use =point-pos-goto= / =point-pos-next= /
+=point-pos-previous=.
+
+To delete current position, use =point-pos-delete= (with =C-u= delete
+all).
+
+See also the commentary of [[https://github.com/alezost/point-pos.el/blob/master/point-pos.el][point-pos.el]].
