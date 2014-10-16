@@ -5,6 +5,7 @@
 ;; Author: Alex Kost <alezost@gmail.com>
 ;; Created: 24 Aug 2012
 ;; Version: 0.1
+;; URL: https://gitorious.org/alezost-emacs/point-pos
 ;; URL: https://github.com/alezost/point-pos.el
 ;; Keywords: tools convenience
 

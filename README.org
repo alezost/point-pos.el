@@ -15,4 +15,4 @@ To go to a saved position, use =point-pos-goto= / =point-pos-next= /
 To delete current position, use =point-pos-delete= (with =C-u= delete
 all).
 
-See also the commentary of [[https://github.com/alezost/point-pos.el/blob/master/point-pos.el][point-pos.el]].
+See also the commentary of =point-pos.el=.
