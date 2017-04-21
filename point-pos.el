@@ -1,6 +1,6 @@
 ;;; point-pos.el --- Save and restore point positions
 
-;; Copyright (C) 2012-2014 Alex Kost
+;; Copyright © 2012–2014, 2017 Alex Kost
 
 ;; Author: Alex Kost <alezost@gmail.com>
 ;; Created: 24 Aug 2012
@@ -12,12 +12,12 @@
 ;; it under the terms of the GNU General Public License as published by
 ;; the Free Software Foundation, either version 3 of the License, or
 ;; (at your option) any later version.
-
+;;
 ;; This program is distributed in the hope that it will be useful,
 ;; but WITHOUT ANY WARRANTY; without even the implied warranty of
 ;; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 ;; GNU General Public License for more details.
-
+;;
 ;; You should have received a copy of the GNU General Public License
 ;; along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
@@ -42,8 +42,7 @@
 ;;; Code:
 
 (defvar point-pos-current nil
-  "Current point position.
-The point position is a list of the form (BUFFER POINT).")
+  "Current point position (marker object).")
 
 (defvar point-pos-back-stack nil
   "Stack (list) of previous point positions.
@@ -66,30 +65,13 @@ position instead of raising an error."
   "Set current point position to POS."
   (setq point-pos-current pos))
 
-(defun point-pos-make (&optional point buffer)
-  "Return point position made from POINT and BUFFER.
-If POINT is nil, use current point.  If BUFFER is nil, use
-current buffer."
-  (list (or buffer (current-buffer))
-        (or point (point))))
-
-(defun point-pos-get-point (&optional pos)
-  "Return point from the point position POS.
-If POS is nil, use current point position."
-  (cadr (or pos (point-pos-get-current))))
-
-(defun point-pos-get-buffer (&optional pos)
-  "Return buffer from the point position POS.
-If POS is nil, use current point position."
-  (car (or pos (point-pos-get-current))))
-
 ;;;###autoload
 (defun point-pos-save ()
   "Save current point position in history."
   (interactive)
   (when point-pos-current
     (push point-pos-current point-pos-back-stack))
-  (setq point-pos-current (point-pos-make))
+  (point-pos-set-current (point-marker))
   (message "Current point position has been saved."))
 
 (defun point-pos-delete (&optional arg)
@@ -146,8 +128,8 @@ If DEL-CURRENT is non-nil, delete current position."
 If POS is nil, use current point position."
   (interactive)
   (or pos (setq pos (point-pos-get-current)))
-  (switch-to-buffer (point-pos-get-buffer pos))
-  (goto-char (point-pos-get-point pos)))
+  (switch-to-buffer (marker-buffer pos))
+  (goto-char (marker-position pos)))
 
 (provide 'point-pos)
 
