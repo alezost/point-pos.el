@@ -123,13 +123,17 @@ If DEL-CURRENT is non-nil, delete current position."
           (point-pos-goto)
           (message "This is a single saved point position."))))))
 
-(defun point-pos-goto (&optional pos)
-  "Go to the point position POS.
-If POS is nil, use current point position."
+(defun point-pos-goto ()
+  "Go to the current point position.
+If the current position is dead (if its buffer was killed),
+delete it and go to the next saved position."
   (interactive)
-  (or pos (setq pos (point-pos-get-current)))
-  (switch-to-buffer (marker-buffer pos))
-  (goto-char (marker-position pos)))
+  (let* ((pos    (point-pos-get-current))
+         (buffer (marker-buffer pos)))
+    (if (null buffer)
+        (point-pos-delete)
+      (switch-to-buffer buffer)
+      (goto-char (marker-position pos)))))
 
 (provide 'point-pos)
 
