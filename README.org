@@ -5,6 +5,23 @@ Emacs package for saving point positions in a ring-like history.
 I know about =C-u C-SPC=, registers and bookmarks and I use all of
 those, but it's not enough for me, so I wrote this little package.
 
+** Installation
+
+*** Automatic
+
+This package can be installed from [[https://melpa.org/][MELPA]] (with =M-x package-install= or
+=M-x list-packages=).
+
+*** Manual
+
+For the manual installation, clone the repo, add the directory to
+=load-path= and autoload for =point-pos-save= command:
+
+#+BEGIN_SRC emacs-lisp
+(add-to-list 'load-path "/path/to/point-pos-dir")
+(autoload 'point-pos-save "point-pos" nil t)
+#+END_SRC
+
 ** Usage
 
 To save current position, use =point-pos-save= command.
@@ -14,5 +31,3 @@ To go to a saved position, use =point-pos-goto= / =point-pos-next= /
 
 To delete current position, use =point-pos-delete= (with =C-u= delete
 all).
-
-See also the commentary of =point-pos.el=.
