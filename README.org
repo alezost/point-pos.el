@@ -35,3 +35,15 @@ To go to a saved position, use =point-pos-goto= / =point-pos-next= /
 
 To delete current position, use =point-pos-delete= (with =C-u= delete
 all).
+
+** Similar packages
+
+Note that =point-pos= is a very simple package: it just provides several
+commands to save / move to / delete positions and that's all!
+
+There is a much more featureful package – [[https://github.com/boyw165/history][history]].  Along with similar
+commands, it provides a minor mode with keys and menus, also you can
+conveniently choose a history item from minibuffer and do other stuff.
+
+Finally, if you just want to add a history button to the Emacs toolbar,
+you may look at [[https://github.com/rolandwalker/back-button][back-button]] package.
